@@ -1,0 +1,23 @@
+<!-- main/templates/discover/answer.html -->
+<!-- Author: Mathias Sackey -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>Mood Match</h2>
+<hr>
+
+{{ description }}
+<br>
+
+<a href="{{ track.url }}"><button>Listen Now!</button></a>
+
+<img class="present" src="{{ track.img_url }}">
+<h4><a href="{{ url_for('bp_track.track', i=track.id) }}">{{ track.name }}</a></h4>
+
+
+{% endblock %}

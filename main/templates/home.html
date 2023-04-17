@@ -1,0 +1,21 @@
+<!-- main/templates/home.html -->
+<!-- Author: Sun Lee -->
+
+<!-- TODO -->
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>Home</h2>
+<hr>
+
+<table>
+    {% include 'browse/tracks.html' %}
+    {% block tracks %}
+    {% endblock %}
+</table>
+
+
+{% endblock %}

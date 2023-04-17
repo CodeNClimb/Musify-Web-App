@@ -1,0 +1,54 @@
+<!-- main/templates/auth/auth.html -->
+<!-- Author: Mathias Sackey, Sun Lee -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>{{ form.submit.label }}</h2>
+<hr>
+
+<form method="POST" action="{{ handler_url }}">
+    {{ form.csrf_token }}
+    <!-- username -->
+    <div class="form-field">
+        <h4>{{ form.username.label }}</h4>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <ul>
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <!-- password -->
+    <div class="form-field">
+        <h4>{{ form.password.label }}</h4>
+        {{ form.password }}
+        {% if form.password.errors %}
+            <ul>
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <!-- sign up/sign in -->
+    {{ form.submit }}
+    <br>
+</form>
+
+{% if 'Sign Up' in form.submit.label|string %}
+    Already have an account? <u><a href="{{ url_for('bp_auth.sign_in') }}">Sign in</a></u> instead.
+{% endif %}
+
+{% if 'Sign In' in form.submit.label|string %}
+    Don't have an account? <u><a href ="{{ url_for('bp_auth.sign_up') }}" >Sign up</a></u> now!
+{% endif %}
+
+
+{% endblock %}

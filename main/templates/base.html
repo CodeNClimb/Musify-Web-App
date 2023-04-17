@@ -1,0 +1,48 @@
+<!-- main/templates/base.html -->
+<!-- Author: Sun Lee, Mathias Sackey -->
+
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<link rel="stylesheet" href="/static/css/main.css"/>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Musify</title>
+</head>
+
+
+<body>
+    <!-- nav -->
+    <div class="nav">
+        <!-- home -->
+        <a href="/"><h1>MUSIFY</h1></a>
+        <!-- auth -->
+        {% if 'username' in session %}
+            <h4>Welcome back, {{ session['username'] }}</h4>
+            <h4><a href="{{ url_for('bp_auth.sign_out') }}">Sign Out</a></h4>
+        {% endif %}
+        <h4><a href="{{ url_for('bp_auth.sign_up') }}">Sign Up</a></h4>
+        <h4><a href="{{ url_for('bp_auth.sign_in') }}">Sign In</a></h4>
+        <!-- browse -->
+        <h3>BROWSE</h3>
+        <h4><a href="{{ url_for('bp_browse.browse', tag='album', i='#') }}">Album</a></h4>
+        <h4><a href="{{ url_for('bp_browse.browse', tag='artist', i='#') }}">Artist</a></h4>
+        <h4><a href="{{ url_for('bp_browse.browse', tag='genre', i='#') }}">Genre</a></h4>
+        <!-- discover -->
+        <h3>DISCOVER</h3>
+        <h4><a href="{{ url_for('bp_discover.discover') }}">Mood Match</a></h4>
+    </div>
+    <!-- mesh -->
+    <div class="mesh">
+        {% block mesh %}
+        {% endblock %}
+    </div>
+</body>
+
+
+</html>

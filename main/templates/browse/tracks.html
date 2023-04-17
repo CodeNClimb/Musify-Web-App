@@ -1,0 +1,24 @@
+{% block tracks %}
+
+
+{% for t in tagged %}
+<tr>
+    <!-- track image -->
+    <td style="width:var(--box-medium)">
+        {% if t.img_url %}
+            <img src="{{ t.img_url }}">
+        {% endif %}
+    </td>
+    <!-- track name -->
+    <td style="text-align:left">
+        <h4>
+            <a href="{{ url_for('bp_browse.browse', tag='artist', i=t.artist.id) }}"><b>[{{ t.artist.name }}]</b></a>  
+            <a href="{{ url_for('bp_track.track', i=t.id) }}">{{ t.name }}</a>
+        </h4>
+        {{ t.time }}
+    </td>
+</tr>
+{% endfor %}
+
+
+{% endblock %}

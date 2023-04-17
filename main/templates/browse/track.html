@@ -1,0 +1,65 @@
+<!-- main/templates/browse/track.html -->
+<!-- Author: Sun Lee, Mathias Sackey -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>{{ track.name }}</h2>
+<hr>
+
+<h4>{{ track.time }}</h4>
+<a href="{{ track.url }}"><button>Listen on Free Music Archive.</button></a>
+
+<h2>Reviews</h2>
+<hr>
+
+<form method="POST" action="{{ url }}">
+    {{ form.csrf_token }}
+    <!-- review text -->
+    <div class="form-field" style="height:var(--box-large)">
+        {{ form.rating }}
+        {{ form.review(
+            placeholder="Write a review!",
+            cols="128",
+            rows="5",
+            wrap="hard"
+        ) }}
+        {% if form.rating.errors or form.submit.errors %}
+            <ul>
+                {% for error in form.rating.errors or form.submit.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <!-- submit -->
+    {{ form.submit }}
+</form>
+<br>
+
+{% if track.reviews|length == 0 %}
+    No reviews yet.
+{% else %}
+    <table>
+        {% for review in track.reviews %}
+            <tr>
+                <!-- username + datetime -->
+                <td style="width:var(--box-medium)">
+                    <h4>{{ review.user.username }}</h4>
+                    {{ review.datetime }}
+                </td>
+                <!-- review rate -->
+                <td style="width:var(--box-medium)">{{ review.rating }}</td>
+                <!-- review text -->
+                <td style="text-align:left">{{ review.review }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+
+{% endblock %}

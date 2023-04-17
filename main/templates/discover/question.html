@@ -1,0 +1,39 @@
+<!-- main/templates/discover/question.html -->
+<!-- Author: Mathias Sackey, Sun Lee -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>Mood Match</h2>
+<hr>
+
+<form method="POST" action="{{ url_for('bp_discover.answer') }}">
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td style="width:50%;text-align:right">{{ form.q1.label }}</td>
+            <td style="text-align:left">{{ form.q1 }}</td>
+        </tr>
+        <tr>
+            <td style="width:50%;text-align:right">{{ form.q2.label }}</td>
+            <td style="text-align:left">{{ form.q2 }}</td>
+        </tr>
+        <tr>
+            <td style="width:50%;text-align:right">{{ form.q3.label }}</td>
+            <td style="text-align:left">{{ form.q3 }}</td>
+        </tr>
+        <tr>
+            <td style="width:50%;text-align:right">{{ form.q4.label }}</td>
+            <td style="text-align:left">{{ form.q4 }}</td>
+        </tr>
+    </table>
+    <br>
+    {{ form.submit }}
+</form>
+
+
+{% endblock %}

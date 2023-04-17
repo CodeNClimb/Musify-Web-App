@@ -1,0 +1,44 @@
+<!-- main/templates/browse/browse.html -->
+<!-- Author: Sun Lee -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>{{ tag+'s' }}</h2>
+<hr>
+
+{% for a in an %}
+    <a href="{{ url_for('bp_browse.browse', tag=tag, i=a) }}">
+    <button class="alphanum">{{ a }}</button>
+    </a>
+{% endfor %}
+<br>
+
+<table>
+    {% if tag in ['album', 'artist', 'genre'] %}
+        {% for t in tagged %}
+            <tr>
+                <td style="width:128px">
+                    <img src="{{ t.img_url }}">
+                </td>
+                <td style="text-align:left">
+                    {% if t.artist %}
+                        <a href="{{ url_for('bp_browse.browse', tag='artist', i=t.artist.id) }}"><b>[{{ t.artist.name }}]</b></a>
+                    {% endif %}
+                    <a href="{{ url_for('bp_browse.browse', tag=tag, i=t.id) }}">{{ t.name }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        {% include 'browse/tracks.html' %}
+        {% block tracks %}
+        {% endblock %}
+    {% endif %}
+</table>
+
+
+{% endblock %}

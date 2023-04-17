@@ -1,0 +1,197 @@
+/* Author: Sun Lee */
+
+
+:root {
+    --box-large:    256px;
+    --box-medium:   128px;
+    --box-small:    64px;
+
+    --text-large:   36px;
+    --text-medium:  24px;
+    --text-small:   12px;
+}
+
+@keyframes hover {
+    from    {text-shadow: none;}
+    to      {text-shadow: -1px -1px cyan, 1px 1px red;}
+}
+
+
+/* box tags */
+
+
+body {
+    margin:     0;
+    overflow-y: scroll;
+}
+
+div.nav {
+    position:   fixed;
+    height:     100vh;
+    width:      var(--box-large);
+
+    background-color: black;
+}
+
+div.mesh {
+    position:           absolute;
+    min-height:         100vh;
+    height:             max-content;
+    right:              0;
+    left:               var(--box-large);
+    padding:            0 var(--text-large);
+
+    background-color: #111;
+}
+
+div.form-field {
+    height: calc(var(--text-large)*3);
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+tr {
+    border-color: white;
+    border-style:   solid;
+    border-width:   1px;
+    border-right:   none;
+    border-left:    none;
+}
+
+td {
+    height:     var(--box-medium);
+    padding:    var(--text-small);
+}
+
+
+img {
+    display:    block;
+    height:     var(--box-medium);
+    width:      var(--box-medium);
+}
+
+img.present {
+    margin:             auto;
+    margin-top:         var(--text-large);
+    margin-bottom:      var(--text-medium);
+    
+    background-color: white;
+    border-color:     white;
+    border-style:       solid;
+    border-width:       6px;
+    box-shadow:         -3px -3px 0 3px cyan, 3px 3px 0 3px red;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+/* text tags */
+
+
+html {
+    color:        white;
+    font-family:    'Lato', sans-serif;
+    font-size:      var(--text-small);
+    text-align:     center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    animation-name: hover;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+button.alphanum {
+    width: var(--text-large);
+    background-color: transparent;
+}
+
+br, hr {
+    margin: 0;
+    margin-bottom: var(--text-large);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: auto;
+    margin-bottom: var(--text-small);
+}
+
+/* MUSIFY */
+h1 {
+    margin-top:     var(--text-large);
+    margin-bottom:  var(--text-large);
+    font-size:      var(--text-large);
+    text-shadow:    -3px 0 cyan, 3px 0 red,
+                    -2px 0 cyan, 2px 0 red,
+                    -1px 0 cyan, 1px 0 red;
+}
+
+h1:hover {
+    animation-name: none;
+}
+
+/* Sign Up, Sign In, Albums, Artists, Genres, Mood Match etc. */
+h2 {
+    padding-top: calc(var(--text-large)*2); /* align with MUSIFY */
+    font-size: var(--text-medium);
+}
+
+/* BROWSE, DISCOVER */
+h3 {
+    background-color: white;
+    color:            black;
+    width:              var(--box-medium);
+    margin-top:         var(--text-large);
+    margin-bottom:      var(--text-medium);
+    padding:            var(--text-small);
+    box-shadow:         -3px -3px 0 3px cyan, 3px 3px 0 3px red;
+}
+
+
+/* Author: Mathias Sackey */
+
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+ul#review_rate {
+    display: flex;
+    justify-content: center;
+}
+
+
+input[type='text'], input[type='password'] {
+    display:    inline-block;
+    padding:    var(--text-small);
+    border:     none;
+    box-sizing: border-box;
+}
+
+button, input[type='submit'] {
+    background-color: black;
+    color:            white;
+    height:             var(--text-large);
+    width:              max-content;
+    padding:            var(--text-small);
+    border:             none;
+    border-radius:      3px;
+    cursor:             pointer;
+}
+
+button:hover, input[type='submit']:hover {
+    background-color: white;
+    color:            black;
+    box-shadow:         -3px -3px 0 3px cyan, 3px 3px 0 3px red;
+}

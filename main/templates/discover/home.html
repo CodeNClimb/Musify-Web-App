@@ -1,0 +1,31 @@
+<!-- main/templates/discover/home.html -->
+<!-- Author: Mathias Sackey -->
+
+
+{% extends 'base.html' %}
+
+
+{% block mesh %}
+
+
+<h2>Mood Match</h2>
+<hr>
+
+<h4>Hello, {{ session['username'] }}</h4>
+
+Welcome to Mood Match!
+<br>
+
+Mood match is a place for music discovery.
+Answer some carefully curated questions and our algorithm will make an impeccable predication as to what song you feel like listening to now.
+<br>
+
+{% if 'username' in session %}
+    <a href="{{ url_for('bp_discover.question') }}"><button>Let's begin!</button></a>
+{% else %}
+    <u><a href="{{ url_for('bp_auth.sign_up') }}">SIGN UP</a></u> or
+    <u><a href="{{ url_for('bp_auth.sign_in') }}">SIGN IN</a></u> to use Mood Match.
+{% endif %}
+
+
+{% endblock %}
